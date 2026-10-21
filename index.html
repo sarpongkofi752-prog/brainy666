@@ -1,74 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>brainy666hub</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>brainy666hub - Internet Hub</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#070708;color:#fff;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;transition:.3s;min-height:100vh}
-  body.light{background:#f5f5f7;color:#111}
-  .wrap{max-width:520px;margin:0 auto;padding:24px 20px 80px}
-  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-  .logo{width:44px;height:44px;background:#fff;color:#000;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px}
-  .url{color:#666;font-size:13px;background:#111;padding:6px 12px;border-radius:20px;border:1px solid #222}
-  body.light .url{background:#fff;color:#888;border-color:#e5e5e5}
-  .num{color:#00E5FF;font-weight:800;font-size:14px;letter-spacing:1px;margin-bottom:8px}
-  h1{font-size:42px;font-weight:800;letter-spacing:-1.5px;margin-bottom:8px}
-  .sub{color:#888;font-size:15px;margin-bottom:28px}
-  body.light .sub{color:#666}
-  .card{background:#141416;border:1px solid #222;border-radius:28px;padding:20px}
-  body.light .card{background:#fff;border-color:#e5e5e5;box-shadow:0 10px 30px rgba(0,0,0,.06)}
-  .row{background:#1E1E20;border-radius:18px;padding:18px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-  body.light .row{background:#f5f5f7}
-  .row b{font-size:15px}
-  .row small{color:#888;font-size:12.5px}
-  /* Toggle */
-  .switch{width:48px;height:28px;background:#333;border-radius:20px;position:relative;cursor:pointer;transition:.3s}
-  .switch.on{background:#00E5FF}
-  body.light .switch{background:#ddd}
-  body.light .switch.on{background:#111}
-  .switch:after{content:'';width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:.3s}
-  .switch.on:after{transform:translateX(20px)}
-  .btn{width:100%;background:#FF2D55;color:#fff;border:0;padding:18px;border-radius:16px;font-weight:800;font-size:14px;letter-spacing:.5px;margin-top:8px;cursor:pointer}
-  .btn:active{transform:scale(.98)}
+:root{--bg:#08080a;--card:#141417;--card2:#1c1c20;--border:#222226;--cyan:#00E5FF;--pink:#FF2D55;--text:#fff;--muted:#7a7a82}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh;transition:.3s}
+body.light{--bg:#f5f5f7;--card:#fff;--card2:#f0f0f3;--border:#e5e5ea;--text:#111;--muted:#8a8a90}
+header{position:sticky;top:0;z-index:50;background:rgba(8,8,10,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.light header{background:rgba(245,245,247,.8)}
+.logo{width:44px;height:44px;background:var(--text);color:var(--bg);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;cursor:pointer}
+.url{font-size:12px;color:var(--muted);background:var(--card2);padding:8px 14px;border-radius:20px;border:1px solid var(--border)}
+.wrap{max-width:640px;margin:auto;padding:24px 20px 100px}
+.num{color:var(--cyan);font-weight:800;font-size:14px;letter-spacing:2px;margin-bottom:8px}
+h1{font-size:42px;font-weight:800;letter-spacing:-1px;line-height:1}.sub{color:var(--muted);margin-top:8px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:14px;margin-top:22px}
+.row{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.row:last-child{margin:0}
+.row b{font-size:15px}.row small{color:var(--muted);font-size:12px}
+.toggle{width:48px;height:28px;background:#2a2a2e;border-radius:20px;position:relative;cursor:pointer;transition:.2s}.toggle:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.25s}
+.toggle.on{background:var(--cyan)}.toggle.on:after{transform:translateX(20px)}
+.btn{width:100%;background:var(--pink);color:#fff;border:0;padding:16px;border-radius:16px;font-weight:800;letter-spacing:.5px;cursor:pointer;margin-top:6px}
+.nav{position:fixed;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(30px);z-index:100;display:none;padding:24px}
+.nav.open{display:block}.nav-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+.nav a{display:block;font-size:36px;font-weight:800;padding:14px 0;color:var(--muted);text-decoration:none;transition:.2s}.nav a.active,.nav a:hover{color:var(--text)}.nav a span{color:var(--cyan);font-size:14px;margin-right:12px;vertical-align:middle}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.tool{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:18px;cursor:pointer}.tool:hover{border-color:var(--cyan)}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+.hidden{display:none}
+input{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:16px;color:var(--text);font-size:15px;outline:none}
+input:focus{border-color:var(--cyan)}
 </style>
 </head>
 <body>
+<header><div class="logo" onclick="openNav()">B6</div><div class="url">brainy666hub.netlify.app</div></header>
+
+<div id="nav" class="nav"><div class="nav-top"><div class="logo" onclick="closeNav()">B6</div><div onclick="closeNav()" style="font-size:28px;cursor:pointer">✕</div></div>
+<a onclick="go('01')" id="n01"><span>01</span> Home</a>
+<a onclick="go('02')" id="n02"><span>02</span> AI Tools</a>
+<a onclick="go('03')" id="n03"><span>03</span> Search Hub</a>
+<a onclick="go('04')" id="n04"><span>04</span> Downloads</a>
+<a onclick="go('05')" id="n05"><span>05</span> Learning</a>
+<a onclick="go('06')" id="n06"><span>06</span> Links</a>
+<a onclick="go('07')" id="n07" class="active"><span>07</span> Settings</a>
+</div>
+
 <div class="wrap">
-  <div class="top">
-    <div class="logo">B6</div>
-    <div class="url">brainy666hub.netlify.app</div>
-  </div>
+<!-- 01 HOME -->
+<div id="p01" class="page hidden"><div class="num">01</div><h1>Internet<br>Hub.</h1><p class="sub">Your gateway to everything. Built by Sarpong in Kumasi.</p>
+<div class="card"><div class="row" style="background:linear-gradient(135deg,#00E5FF22,#FF2D5522)"><div><b style="font-size:22px">Welcome, Brainy666</b><br><small>6 tools • 100% free • Ghana made</small></div><div style="font-size:28px">🇬🇭</div></div>
+<div class="grid"><div class="tool" onclick="go('02')"><b>🤖 AI</b><br><small>Chat, Image, Code</small></div><div class="tool" onclick="go('03')"><b>🔍 Search</b><br><small>All-in-one</small></div><div class="tool" onclick="go('04')"><b>📦 Tools</b><br><small>Daily use</small></div><div class="tool" onclick="go('05')"><b>📚 Learn</b><br><small>Grow skills</small></div></div></div></div>
 
-  <div class="num">07</div>
-  <h1>Settings</h1>
-  <div class="sub">Customize your brainy666hub.</div>
+<!-- 02 AI TOOLS -->
+<div id="p02" class="page hidden"><div class="num">02</div><h1>AI Tools</h1><p class="sub">Powerful AI, one click away.</p>
+<div class="card"><div class="row" onclick="window.open('https://chat.openai.com')"><div><b>ChatGPT</b><br><small>Ask anything</small></div><span>→</span></div>
+<div class="row" onclick="window.open('https://claude.ai')"><div><b>Claude</b><br><small>Writing & thinking</small></div><span>→</span></div>
+<div class="row" onclick="window.open('https://leonardo.ai')"><div><b>Leonardo AI</b><br><small>Make images</small></div><span>→</span></div>
+<div class="row" onclick="window.open('https://perplexity.ai')"><div><b>Perplexity</b><br><small>Search + AI</small></div><span>→</span></div></div></div>
 
-  <div class="card">
-    <div class="row">
-      <div><b>Light Mode</b><br><small>Switch to light theme</small></div>
-      <div class="switch" id="lightSw" onclick="toggleLight()"></div>
-    </div>
-    <div class="row">
-      <div><b>Animations</b><br><small>Enable UI animations</small></div>
-      <div class="switch on" id="animSw" onclick="this.classList.toggle('on')"></div>
-    </div>
-    <button class="btn" onclick="localStorage.clear();location.reload()">CLEAR LOCAL SETTINGS</button>
-  </div>
+<!-- 03 SEARCH -->
+<div id="p03" class="page hidden"><div class="num">03</div><h1>Search Hub</h1><p class="sub">Search anywhere from here.</p>
+<div class="card"><input id="q" placeholder="Search Google, YouTube, GitHub..." onkeydown="if(event.key==='Enter')search()"><button class="btn" style="margin-top:10px" onclick="search()">SEARCH</button>
+<div style="margin-top:12px" class="grid"><div class="tool" onclick="s('youtube')">YouTube</div><div class="tool" onclick="s('github')">GitHub</div><div class="tool" onclick="s('google')">Google</div><div class="tool" onclick="s('scholar')">Scholar</div></div></div></div>
 
-  <div style="text-align:center;margin-top:30px;color:#555;font-size:13px">Built by Sarpong • 2026</div>
+<!-- 04 DOWNLOADS -->
+<div id="p04" class="page hidden"><div class="num">04</div><h1>Downloads</h1><p class="sub">Useful tools & files.</p>
+<div class="card"><div class="row"><div><b>📄 Resume Maker</b><br><small>Create CV fast</small></div><div class="toggle"></div></div><div class="row"><div><b>🎨 Logo Pack</b><br><small>For your brand</small></div><div class="toggle on"></div></div><button class="btn">COMING SOON</button></div></div>
+
+<!-- 05 LEARNING -->
+<div id="p05" class="page hidden"><div class="num">05</div><h1>Learning</h1><p class="sub">Level up daily.</p>
+<div class="card"><div class="row" onclick="window.open('https://freecodecamp.org')"><div><b>FreeCodeCamp</b><br><small>Code for free</small></div><span>→</span></div><div class="row" onclick="window.open('https://roadmap.sh')"><div><b>Roadmaps</b><br><small>Dev paths</small></div><span>→</span></div></div></div>
+
+<!-- 06 LINKS -->
+<div id="p06" class="page hidden"><div class="num">06</div><h1>Your Links</h1><p class="sub">Save your important links.</p>
+<div class="card"><input id="linkTitle" placeholder="Title (e.g. My Portfolio)"><input id="linkUrl" placeholder="https://..." style="margin-top:8px"><button class="btn" onclick="addLink()">ADD LINK</button><div id="links" style="margin-top:12px"></div></div></div>
+
+<!-- 07 SETTINGS - YOUR CURRENT DESIGN -->
+<div id="p07" class="page"><div class="num">07</div><h1>Settings</h1><p class="sub">Customize your brainy666hub.</p>
+<div class="card"><div class="row"><div><b>Light Mode</b><br><small>Switch to light theme</small></div><div class="toggle" id="tLight" onclick="toggleLight()"></div></div>
+<div class="row"><div><b>Animations</b><br><small>Enable UI animations</small></div><div class="toggle on" id="tAnim" onclick="this.classList.toggle('on')"></div></div>
+<button class="btn" onclick="localStorage.clear();location.reload()">CLEAR LOCAL SETTINGS</button></div><div class="foot">Built by Sarpong • 2026 • Kumasi, Ghana</div></div>
 </div>
 
 <script>
-  const body=document.body;
-  const lightSw=document.getElementById('lightSw');
-  function toggleLight(){
-    lightSw.classList.toggle('on');
-    body.classList.toggle('light');
-    localStorage.setItem('light', body.classList.contains('light'))
-  }
-  if(localStorage.getItem('light')==='true'){ body.classList.add('light'); lightSw.classList.add('on'); }
+let cur='07'
+function openNav(){document.getElementById('nav').classList.add('open')}
+function closeNav(){document.getElementById('nav').classList.remove('open')}
+function go(id){cur=id;document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('p'+id).classList.remove('hidden');document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));document.getElementById('n'+id).classList.add('active');closeNav();window.scrollTo(0,0)}
+function toggleLight(){document.getElementById('tLight').classList.toggle('on');document.body.classList.toggle('light');localStorage.setItem('light',document.body.classList.contains('light'))}
+if(localStorage.getItem('light')==='true'){document.body.classList.add('light');document.getElementById('tLight').classList.add('on')}
+function search(){let q=document.getElementById('q').value;if(!q)return;window.open('https://www.google.com/search?q='+encodeURIComponent(q))}
+function s(t){let q=document.getElementById('q').value||'';let urls={youtube:'https://www.youtube.com/results?search_query=',github:'https://github.com/search?q=',google:'https://www.google.com/search?q=',scholar:'https://scholar.google.com/scholar?q='};window.open(urls[t]+encodeURIComponent(q))}
+function addLink(){let title=document.getElementById('linkTitle').value, url=document.getElementById('linkUrl').value;if(!title||!url)return alert('Add title & url');let list=JSON.parse(localStorage.getItem('myLinks')||'[]');list.push({title,url});localStorage.setItem('myLinks',JSON.stringify(list));renderLinks();document.getElementById('linkTitle').value='';document.getElementById('linkUrl').value=''}
+function renderLinks(){let list=JSON.parse(localStorage.getItem('myLinks')||'[]');document.getElementById('links').innerHTML=list.map(l=>`<div class="row" onclick="window.open('${l.url}')"><div><b>${l.title}</b><br><small>${l.url}</small></div><span>→</span></div>`).join('')}
+renderLinks();
 </script>
+</div>
 </body>
-  </html>
+ </html>
