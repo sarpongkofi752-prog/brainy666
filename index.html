@@ -5,18 +5,21 @@
 <title>brainy666hub - Internet Hub</title>
 <style>
 :root{--bg:#060608;--card:#141418;--card2:#1E1E24;--border:#26262E;--cyan:#00E5FF;--pink:#FF2D55;--muted:#8B8B93;--text:#fff}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;transition:.3s}
-body.light{--bg:#F6F6F8;--card:#FFFFFF;--card2:#EFEFF2;--border:#E0E0E6;--muted:#777;--text:#111}
-body.light header{background:rgba(255,255,255,.9)!important}
-body.no-anim *{transition:none!important;animation:none!important}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif}
+body.light{--bg:#F6F6F8;--card:#FFF;--card2:#EFEFF2;--border:#E0E0E6;--muted:#777;--text:#111}
 header{position:sticky;top:0;z-index:10;background:rgba(6,6,8,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{width:44px;height:44px;background:var(--text);color:var(--bg);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer}
+.logo{width:44px;height:44px;background:var(--text);color:var(--bg);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover}
 .pill{font-size:11px;color:var(--muted);background:var(--card2);padding:8px 14px;border-radius:20px;border:1px solid var(--border)}
 .wrap{max-width:640px;margin:auto;padding:20px 20px 100px}.num{color:var(--cyan);font-weight:800;font-size:12px;letter-spacing:3px}
-h1{font-size:40px;font-weight:900;line-height:.95;margin-top:6px}.sub{color:var(--muted);margin-top:8px;font-size:13px}
+h1{font-size:42px;font-weight:900;line-height:.95;margin-top:6px}.sub{color:var(--muted);margin-top:8px;font-size:13px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:26px;padding:16px;margin-top:18px}
 .row{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;cursor:pointer}
-.tool{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:16px;margin-bottom:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tool{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:16px;min-height:110px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:4px;cursor:pointer}
+.tool .t-icon{font-size:22px;margin-bottom:6px}
+.tool b{font-size:15px;line-height:1.2;display:block}
+.tool small{font-size:11px;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
 .btn{width:100%;background:linear-gradient(90deg,#A855F7,#00E5FF);color:#fff;border:0;padding:14px;border-radius:14px;font-weight:800;cursor:pointer;font-size:13px}
 .btn.cyan{background:linear-gradient(90deg,#00E5FF,#0088FF)}.btn.pink{background:var(--pink)}.btn.small{width:auto;padding:8px 14px;font-size:11px;border-radius:20px;display:inline-block;margin:4px 6px 4px 0}
 .nav{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:100;display:none;padding:24px}.nav.open{display:block}.nav a{display:flex;font-size:30px;font-weight:900;padding:13px 0;color:#555;text-decoration:none}.nav a.active{color:#fff}.nav a span{color:var(--cyan);font-size:13px;margin-right:12px}
@@ -26,18 +29,30 @@ h1{font-size:40px;font-weight:900;line-height:.95;margin-top:6px}.sub{color:var(
 .icon{width:44px;height:44px;background:var(--card2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px}
 .divider{height:1px;background:var(--border);margin:18px 0}
 .toggle{width:48px;height:28px;background:#2a2a2e;border-radius:20px;position:relative;cursor:pointer;flex-shrink:0}.toggle:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.25s}.toggle.on{background:var(--cyan)}.toggle.on:after{transform:translateX(20px)}
-body.light .toggle{background:#DDD}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--card2);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;cursor:pointer;flex-shrink:0}
+.avatar img{width:100%;height:100%;object-fit:cover}
 </style>
 </head>
 <body>
-<header><div class="logo" onclick="openNav()">B6</div><div class="pill">brainy666hub.netlify.app • LIVE</div></header>
+<header><div class="logo" id="headerLogo" onclick="openNav()">B6</div><div class="pill">brainy666.onrender.com • LIVE</div></header>
 <div id="nav" class="nav"><div style="display:flex;justify-content:space-between;margin-bottom:30px"><div class="logo" onclick="closeNav()">B6</div><div onclick="closeNav()" style="font-size:28px;cursor:pointer;color:#fff">✕</div></div>
 <a onclick="go('01')" id="n01"><span>01</span> Home</a><a onclick="go('02')" id="n02"><span>02</span> AI Tools</a><a onclick="go('03')" id="n03"><span>03</span> Search Hub</a><a onclick="go('04')" id="n04"><span>04</span> Tools</a><a onclick="go('05')" id="n05"><span>05</span> Workspace</a><a onclick="go('06')" id="n06"><span>06</span> Links</a><a onclick="go('07')" id="n07"><span>07</span> Settings</a></div>
 
 <div class="wrap">
-<div id="p01" class="page"><div class="num">01 — WELCOME</div><h1>Internet<br><span style="background:linear-gradient(90deg,#00E5FF,#FF2D55);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Hub.</span></h1><p class="sub">All tools + Account + Settings - 100% clone!</p>
-<div class="card"><div class="row" style="background:linear-gradient(135deg,#00E5FF11,#FFD60A11)"><div><b>Akwaaba, Brainy666! 🇬🇭 🚀</b><br><small id="welcomeUser">7 sections • Tap 07 for Light Mode</small></div></div>
-<div class="grid"><div class="tool" onclick="go('04')"><b>🛠️ Tools</b><small>Password, IP, URL</small></div><div class="tool" onclick="go('07')"><b>⚙️ Settings</b><small>Light Mode</small></div><div class="tool" onclick="go('05')"><b>📝 Workspace</b><small>Notes + Account</small></div><div class="tool" onclick="go('06')"><b>💬 Links</b><small>WhatsApp</small></div></div><button class="btn cyan" onclick="go('07')">GO TO SETTINGS →</button></div></div>
+<div id="p01" class="page"><div class="num">01 — WELCOME</div><h1>Internet<br><span style="background:linear-gradient(90deg,#00E5FF,#FF2D55);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Hub.</span></h1><p class="sub">Fixed + Clean + All tools!</p>
+<div class="card">
+<div style="display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#00E5FF11,#FFD60A11);border-radius:16px;padding:14px;margin-bottom:12px">
+<div id="homeAvatar" class="avatar" onclick="go('05')">🇬🇭</div>
+<div><b id="homeName">Akwaaba, Brainy666! 🇬🇭 🚀</b><br><small id="welcomeUser">Tap B6 for menu • 7 sections</small></div>
+</div>
+<div class="grid">
+<div class="tool" onclick="go('04')"><div class="t-icon">🛠️</div><b>Tools</b><small>Password, IP, URL</small></div>
+<div class="tool" onclick="go('07')"><div class="t-icon">⚙️</div><b>Settings</b><small>Light Mode</small></div>
+<div class="tool" onclick="go('05')"><div class="t-icon">📝</div><b>Workspace</b><small>Notes + Account</small></div>
+<div class="tool" onclick="go('06')"><div class="t-icon">💬</div><b>Links</b><small>WhatsApp</small></div>
+</div>
+<button class="btn cyan" onclick="go('07')" style="margin-top:12px">GO TO SETTINGS →</button>
+</div></div>
 
 <div id="p02" class="page hidden"><div class="num">02 — AI</div><h1>AI Tools</h1><div class="card"><div class="row" onclick="window.open('https://chat.openai.com')"><div><b>ChatGPT</b><br><small>Best AI</small></div><span>→</span></div><div class="row" onclick="window.open('https://claude.ai')"><div><b>Claude</b><br><small>Writing</small></div><span>→</span></div></div></div>
 <div id="p03" class="page hidden"><div class="num">03 — SEARCH</div><h1>Search Hub</h1><div class="card"><input id="q" placeholder="Search..."><button class="btn cyan" onclick="window.open('https://google.com/search?q='+encodeURIComponent(document.getElementById('q').value))">SEARCH</button></div></div>
@@ -49,35 +64,35 @@ body.light .toggle{background:#DDD}
 <div class="card"><div class="icon">🌐</div><b>IP Information</b><input id="ipIn" placeholder="Enter IP or leave empty" style="margin-top:12px"><div><span class="btn small" style="background:linear-gradient(90deg,#A855F7,#00E5FF)" onclick="checkIp()">CHECK IP</span><span class="btn small" style="background:linear-gradient(90deg,#A855F7,#00E5FF)" onclick="myIp()">MY IP</span><span class="btn small" style="background:var(--card2)" onclick="clearIp()">CLEAR</span></div><div id="ipOut" class="output">IP information will appear here...</div></div>
 </div>
 
-<div id="p05" class="page hidden">
-<div class="num">05 — WORKSPACE</div><h1>Workspace</h1><p class="sub">Keep your useful information here.</p>
-<div class="card"><div style="font-weight:800;margin-bottom:10px">📝 Notes</div><textarea id="noteIn" rows="3" placeholder="Write a note..."></textarea><button class="btn cyan" onclick="saveNote()">SAVE NOTE</button><div id="notesList" style="margin-top:12px"></div><small id="noteStatus" style="color:var(--muted);font-size:11px;display:block;margin-top:8px">Loading notes...</small></div>
-<div class="card"><div style="font-size:18px;font-weight:900;margin-bottom:6px">🔐 BRAINY666 Account</div><small style="color:var(--muted);display:block;margin-bottom:12px">Create an account to keep your workspace connected to your profile.</small>
-<div id="loggedOut"><input id="su_user" placeholder="Username"><input id="su_email" type="email" placeholder="Email"><input id="su_pass" type="password" placeholder="Password (8+ characters)"><button class="btn" onclick="createAccount()">CREATE ACCOUNT</button><div class="divider"></div><input id="li_email" type="email" placeholder="Email"><input id="li_pass" type="password" placeholder="Password"><button class="btn cyan" onclick="login()">LOGIN</button><small style="color:var(--muted);font-size:12px;display:block;margin-top:10px;text-align:center">Create an account or log in.</small></div>
-<div id="loggedIn" class="hidden"><div class="row" style="background:linear-gradient(135deg,#00E5FF11,#A855F711)"><div><b id="displayName">Hi!</b><br><small id="displayEmail">email</small></div><div style="font-size:24px">✅</div></div><button class="btn" style="background:var(--card2);margin-top:10px" onclick="logout()">LOGOUT</button><div class="divider"></div><div style="font-weight:800;margin-bottom:8px">⚙️ Account Settings</div><input id="set_user" placeholder="Username"><input id="set_email" placeholder="Email"><select id="set_theme"><option>Dark Theme</option><option>Light Theme</option><option>Ghana Theme 🇬🇭</option></select><button class="btn" onclick="saveAccount()">SAVE ACCOUNT</button></div>
+<div id="p05" class="page hidden"><div class="num">05 — WORKSPACE</div><h1>Workspace</h1>
+<div class="card">
+<div style="font-weight:900;margin-bottom:14px;font-size:18px">👤 Profile Picture</div>
+<input type="file" id="picInput" accept="image/*" style="display:none" onchange="handlePic(this)">
+<div style="display:flex;gap:14px;align-items:center;margin-bottom:14px">
+<div id="profileAvatar" class="avatar" onclick="openPicker()">📷</div>
+<div><b id="profileName">No profile yet</b><br><small style="color:var(--muted)">Tap to add your face</small></div>
 </div>
+<button class="btn cyan" onclick="openPicker()" style="margin-bottom:8px">📸 CHOOSE FROM GALLERY</button>
+<input id="prof_user" placeholder="Your Name e.g. Sarpong">
+<button class="btn" onclick="saveProfilePic()">SAVE PROFILE</button>
+</div>
+<div class="card"><div style="font-weight:800;margin-bottom:10px">📝 Notes</div><textarea id="noteIn" rows="3" placeholder="Write a note..."></textarea><button class="btn cyan" onclick="saveNote()">SAVE NOTE</button><div id="notesList" style="margin-top:12px"></div><small id="noteStatus" style="color:var(--muted);font-size:11px;display:block;margin-top:8px">Loading...</small></div>
+<div class="card"><div style="font-size:18px;font-weight:900;margin-bottom:6px">🔐 Account</div><div id="loggedOut"><input id="su_user" placeholder="Username"><input id="su_email" type="email" placeholder="Email"><input id="su_pass" type="password" placeholder="Password (8+)"><button class="btn" onclick="createAccount()">CREATE ACCOUNT</button><div class="divider"></div><input id="li_email" type="email" placeholder="Email"><input id="li_pass" type="password" placeholder="Password"><button class="btn cyan" onclick="login()">LOGIN</button></div><div id="loggedIn" class="hidden"><div class="row"><div style="display:flex;gap:10px;align-items:center"><div id="loggedAvatar" class="avatar" style="width:48px;height:48px">👤</div><div><b id="displayName">Hi!</b><br><small id="displayEmail">email</small></div></div><div>✅</div></div><button class="btn" style="background:var(--card2);margin-top:10px" onclick="logout()">LOGOUT</button></div></div>
 </div>
 
 <div id="p06" class="page hidden"><div class="num">06 — CONNECT</div><h1>Your Links</h1><div class="card"><div class="row" style="border-color:#25D366;background:#25D36615" onclick="window.open('https://wa.me/233594595912?text=Hello%20Brainy666!%20I%20saw%20your%20hub%20🇬🇭')"><div><b>💬 WhatsApp Me</b> <span style="background:#25D366;color:#000;font-size:9px;font-weight:800;padding:3px 6px;border-radius:6px">CHAT NOW</span><br><small>+233 59 459 5912</small></div><span>→</span></div><div class="row" onclick="window.open('https://github.com/brainy666')"><div><b>💻 GitHub</b><br><small>github.com/brainy666</small></div><span>→</span></div></div></div>
-
-<div id="p07" class="page hidden">
-<div class="num">07 — SETTINGS</div><h1>Settings</h1><p class="sub">Customize your hub.</p>
-<div class="card">
-<div class="row"><div><b>Light Mode</b><br><small style="color:var(--muted)">Switch the website theme.</small></div><div id="lightToggle" class="toggle" onclick="toggleLight()"></div></div>
-<div class="row"><div><b>Animations</b><br><small style="color:var(--muted)">Enable interface animations.</small></div><div id="animToggle" class="toggle on" onclick="toggleAnim()"></div></div>
-<button class="btn pink" style="margin-top:6px" onclick="clearLocal()">CLEAR LOCAL SETTINGS</button>
-</div>
-<div style="margin-top:40px;border-top:1px solid var(--border);padding-top:20px">
-<div style="font-weight:900;letter-spacing:-.5px">BRAINY666 INTERNET HUB</div><small style="color:var(--muted)">Universal Internet Workspace<br><br>Built with HTML • CSS • JavaScript<br>Built by Sarpong • Kumasi • 2026<br><br>brainy666hub.netlify.app • LIVE</small>
-</div>
-</div>
-
+<div id="p07" class="page hidden"><div class="num">07 — SETTINGS</div><h1>Settings</h1><p class="sub">Customize your hub.</p><div class="card"><div class="row"><div><b>Light Mode</b><br><small style="color:var(--muted)">Switch theme</small></div><div id="lightToggle" class="toggle" onclick="toggleLight()"></div></div><div class="row"><div><b>Animations</b><br><small style="color:var(--muted)">Enable animations</small></div><div id="animToggle" class="toggle on" onclick="toggleAnim()"></div></div><button class="btn pink" onclick="clearLocal()">CLEAR LOCAL SETTINGS</button></div><div style="margin-top:40px;border-top:1px solid var(--border);padding-top:20px"><div style="font-weight:900">BRAINY666 INTERNET HUB</div><small style="color:var(--muted)">Built by Sarpong • Kumasi • 2026<br>brainy666.onrender.com • brainy666hub.netlify.app</small></div></div>
 </div>
 
 <script>
+let tempPicData='';
 function openNav(){document.getElementById('nav').classList.add('open')}
 function closeNav(){document.getElementById('nav').classList.remove('open')}
 function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('p'+id).classList.remove('hidden');document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));let el=document.getElementById('n'+id);if(el)el.classList.add('active');closeNav();scrollTo(0,0)}
+function openPicker(){document.getElementById('picInput').click();}
+function handlePic(input){if(!input.files||!input.files[0])return;let file=input.files[0];if(file.size>3*1024*1024){alert('Pic too big! Use <3MB');return;}let reader=new FileReader();reader.onload=function(e){tempPicData=e.target.result;document.getElementById('profileAvatar').innerHTML='<img src="'+tempPicData+'">';document.getElementById('homeAvatar').innerHTML='<img src="'+tempPicData+'">';document.getElementById('headerLogo').innerHTML='<img src="'+tempPicData+'">';document.getElementById('loggedAvatar').innerHTML='<img src="'+tempPicData+'">';};reader.readAsDataURL(file);}
+function saveProfilePic(){let name=document.getElementById('prof_user').value.trim()||'';if(!tempPicData&&!localStorage.getItem('b6_pic')){alert('Tap CHOOSE FROM GALLERY first!');return;}if(tempPicData)localStorage.setItem('b6_pic',tempPicData);if(name){localStorage.setItem('b6_profile_name',name);}alert('Saved! 🇬🇭');updateProfile();}
+function updateProfile(){let pic=localStorage.getItem('b6_pic');let name=localStorage.getItem('b6_profile_name');if(pic){tempPicData=pic;document.getElementById('profileAvatar').innerHTML='<img src="'+pic+'">';document.getElementById('homeAvatar').innerHTML='<img src="'+pic+'">';document.getElementById('headerLogo').innerHTML='<img src="'+pic+'">';document.getElementById('loggedAvatar').innerHTML='<img src="'+pic+'">';}if(name){document.getElementById('profileName').innerText=name;document.getElementById('homeName').innerText='Akwaaba, '+name+'! 🇬🇭';document.getElementById('prof_user').value=name;document.getElementById('welcomeUser').innerText='Welcome, '+name+'!';}}
 function checkPwd(){let p=document.getElementById('pwd').value;let s=0;let tips=[];if(p.length>=8)s+=25;else tips.push('8+ chars');if(/[A-Z]/.test(p))s+=25;else tips.push('uppercase');if(/[0-9]/.test(p))s+=25;else tips.push('numbers');if(/[^A-Za-z0-9]/.test(p))s+=25;else tips.push('symbols');let label=s<25?'Very Weak':s<50?'Weak':s<75?'Good':'Strong';document.getElementById('bar').style.width=s+'%';document.getElementById('strength').innerText=label+' ('+s+'%)';document.getElementById('tips').innerText=tips.length?'Tips: '+tips.join(', '):'Great password! 🔥';}
 async function hashPwd(){let p=document.getElementById('pwd').value;if(!p)return alert('Enter password');let enc=new TextEncoder().encode(p);let buf=await crypto.subtle.digest('SHA-256',enc);let hash=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');document.getElementById('hashOut').innerText=hash;}
 function clearPwd(){document.getElementById('pwd').value='';document.getElementById('bar').style.width='0%';document.getElementById('strength').innerText='—';document.getElementById('tips').innerText='Enter a password to see improvement tips.';document.getElementById('hashOut').innerText='SHA-256 hash will appear here...';}
@@ -88,18 +103,18 @@ async function checkIp(){let ip=document.getElementById('ipIn').value.trim();if(
 async function myIp(){document.getElementById('ipOut').innerText='Fetching your IP...';try{let r=await fetch('https://ipapi.co/json/');let j=await r.json();document.getElementById('ipIn').value=j.ip;document.getElementById('ipOut').innerText=`Your IP: ${j.ip}\nCity: ${j.city}, ${j.region}, ${j.country_name} 🇬🇭\nISP: ${j.org}\nDevice: ${navigator.userAgent.includes('Mobile')?'Mobile 📱':'Desktop 💻'}`;}catch(e){document.getElementById('ipOut').innerText='Unable to fetch IP';}}
 function clearIp(){document.getElementById('ipIn').value='';document.getElementById('ipOut').innerText='IP information will appear here...';}
 function saveNote(){let t=document.getElementById('noteIn').value;if(!t.trim())return alert('Write a note');let notes=JSON.parse(localStorage.getItem('b6_notes')||'[]');notes.unshift({text:t,time:new Date().toLocaleString()});localStorage.setItem('b6_notes',JSON.stringify(notes));document.getElementById('noteIn').value='';renderNotes();}
-function renderNotes(){let notes=JSON.parse(localStorage.getItem('b6_notes')||'[]');let el=document.getElementById('notesList');let st=document.getElementById('noteStatus');if(!notes.length){el.innerHTML='';st.innerText='No notes yet. Saved privately on this device.';return}st.innerText=`${notes.length} notes saved`;el.innerHTML=notes.map((n,i)=>`<div class="row"><div><b style="font-size:12px">${n.text}</b><br><small>${n.time}</small></div><span onclick="delNote(${i})" style="color:var(--pink);font-weight:800;cursor:pointer">✕</span></div>`).join('');}
+function renderNotes(){let notes=JSON.parse(localStorage.getItem('b6_notes')||'[]');let el=document.getElementById('notesList');let st=document.getElementById('noteStatus');if(!notes.length){el.innerHTML='';st.innerText='No notes yet.';return}st.innerText=`${notes.length} notes saved`;el.innerHTML=notes.map((n,i)=>`<div class="row"><div><b style="font-size:12px">${n.text}</b><br><small>${n.time}</small></div><span onclick="delNote(${i})" style="color:var(--pink);font-weight:800;cursor:pointer">✕</span></div>`).join('');}
 function delNote(i){let notes=JSON.parse(localStorage.getItem('b6_notes')||'[]');notes.splice(i,1);localStorage.setItem('b6_notes',JSON.stringify(notes));renderNotes();}
-function createAccount(){let u=document.getElementById('su_user').value.trim(),e=document.getElementById('su_email').value.trim(),p=document.getElementById('su_pass').value;if(!u||!e||!p)return alert('Fill all fields');if(p.length<8)return alert('Password must be 8+');let accs=JSON.parse(localStorage.getItem('b6_accounts')||'[]');if(accs.find(a=>a.email===e))return alert('Email exists - login');accs.push({username:u,email:e,password:p});localStorage.setItem('b6_accounts',JSON.stringify(accs));localStorage.setItem('b6_current',JSON.stringify({username:u,email:e}));alert('Account created! Akwaaba '+u+'! 🇬🇭');updateAuth();}
-function login(){let e=document.getElementById('li_email').value.trim(),p=document.getElementById('li_pass').value;let accs=JSON.parse(localStorage.getItem('b6_accounts')||'[]');let found=accs.find(a=>a.email===e&&a.password===p);if(!found)return alert('Wrong email or password');localStorage.setItem('b6_current',JSON.stringify({username:found.username,email:found.email}));alert('Welcome back '+found.username+'!');updateAuth();}
+function createAccount(){let u=document.getElementById('su_user').value.trim(),e=document.getElementById('su_email').value.trim(),p=document.getElementById('su_pass').value;if(!u||!e||!p)return alert('Fill all');if(p.length<8)return alert('Password 8+');let accs=JSON.parse(localStorage.getItem('b6_accounts')||'[]');if(accs.find(a=>a.email===e))return alert('Email exists');accs.push({username:u,email:e,password:p});localStorage.setItem('b6_accounts',JSON.stringify(accs));localStorage.setItem('b6_current',JSON.stringify({username:u,email:e}));alert('Created! Akwaaba '+u+'!');updateAuth();}
+function login(){let e=document.getElementById('li_email').value.trim(),p=document.getElementById('li_pass').value;let accs=JSON.parse(localStorage.getItem('b6_accounts')||'[]');let found=accs.find(a=>a.email===e&&a.password===p);if(!found)return alert('Wrong email/pass');localStorage.setItem('b6_current',JSON.stringify({username:found.username,email:found.email}));alert('Welcome back '+found.username+'!');updateAuth();}
 function logout(){localStorage.removeItem('b6_current');updateAuth();}
-function saveAccount(){let u=document.getElementById('set_user').value.trim(),e=document.getElementById('set_email').value.trim();if(!u||!e)return alert('Fill username & email');let cur=JSON.parse(localStorage.getItem('b6_current'));let accs=JSON.parse(localStorage.getItem('b6_accounts')||'[]');let idx=accs.findIndex(a=>a.email===cur.email);if(idx>-1){accs[idx].username=u;accs[idx].email=e;localStorage.setItem('b6_accounts',JSON.stringify(accs));localStorage.setItem('b6_current',JSON.stringify({username:u,email:e}));alert('Account saved!');}updateAuth();}
-function updateAuth(){let cur=JSON.parse(localStorage.getItem('b6_current')||'null');let out=document.getElementById('loggedOut'),inn=document.getElementById('loggedIn');if(!cur){out.classList.remove('hidden');inn.classList.add('hidden');document.getElementById('welcomeUser').innerText='7 sections • Tap 07 for Light Mode';return}out.classList.add('hidden');inn.classList.remove('hidden');document.getElementById('displayName').innerText='Hi, '+cur.username+'! 🇬🇭';document.getElementById('displayEmail').innerText=cur.email;document.getElementById('set_user').value=cur.username;document.getElementById('set_email').value=cur.email;document.getElementById('welcomeUser').innerText='Welcome, '+cur.username+'! • Workspace connected';}
+function saveAccount(){let u=document.getElementById('set_user').value.trim(),e=document.getElementById('set_email').value.trim();if(!u||!e)return alert('Fill username & email');let cur=JSON.parse(localStorage.getItem('b6_current'));let accs=JSON.parse(localStorage.getItem('b6_accounts')||'[]');let idx=accs.findIndex(a=>a.email===cur.email);if(idx>-1){accs[idx].username=u;accs[idx].email=e;localStorage.setItem('b6_accounts',JSON.stringify(accs));localStorage.setItem('b6_current',JSON.stringify({username:u,email:e}));alert('Saved!');}updateAuth();}
+function updateAuth(){let cur=JSON.parse(localStorage.getItem('b6_current')||'null');let out=document.getElementById('loggedOut'),inn=document.getElementById('loggedIn');if(!cur){out.classList.remove('hidden');inn.classList.add('hidden');return}out.classList.add('hidden');inn.classList.remove('hidden');document.getElementById('displayName').innerText='Hi, '+cur.username+'! 🇬🇭';document.getElementById('displayEmail').innerText=cur.email;}
 function toggleLight(){let isLight=document.body.classList.toggle('light');document.getElementById('lightToggle').classList.toggle('on',isLight);localStorage.setItem('b6_light',isLight?'1':'0');}
 function toggleAnim(){let noAnim=document.body.classList.toggle('no-anim');document.getElementById('animToggle').classList.toggle('on',!noAnim);localStorage.setItem('b6_noanim',noAnim?'1':'0');}
-function clearLocal(){if(!confirm('Clear ALL local data? Notes, accounts, settings will be lost!'))return;localStorage.clear();location.reload();}
-(function initSettings(){let light=localStorage.getItem('b6_light')==='1';if(light){document.body.classList.add('light');document.getElementById('lightToggle').classList.add('on');}let noanim=localStorage.getItem('b6_noanim')==='1';if(noanim){document.body.classList.add('no-anim');document.getElementById('animToggle').classList.remove('on');}})();
+function clearLocal(){if(!confirm('Clear ALL local data?'))return;localStorage.clear();location.reload();}
+(function init(){let light=localStorage.getItem('b6_light')==='1';if(light){document.body.classList.add('light');document.getElementById('lightToggle').classList.add('on');}let noanim=localStorage.getItem('b6_noanim')==='1';if(noanim){document.body.classList.add('no-anim');document.getElementById('animToggle').classList.remove('on');}updateProfile();})();
 renderNotes();updateAuth();go('01');
 </script>
 </body>
-                                                                                                                                                                                                                                                                                                                                  </html>
+                                       </html>
