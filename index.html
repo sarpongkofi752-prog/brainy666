@@ -4,97 +4,16 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>brainy666hub - Internet Hub</title>
 <style>
-:root{--bg:#060608;--card:#121214;--card2:#1c1c20;--border:#232326;--cyan:#00E5FF;--pink:#FF2D55;--yellow:#FFD60A;--green:#00FF88;--text:#fff;--muted:#8b8b93}
+:root{--bg:#060608;--card:#121214;--card2:#1c1c20;--border:#232326;--cyan:#00E5FF;--pink:#FF2D55;--text:#fff;--muted:#8b8b93}
 *{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh}
 header{position:sticky;top:0;z-index:50;background:rgba(6,6,8,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{width:44px;height:44px;background:#fff;color:#000;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;cursor:pointer;box-shadow:0 0 20px rgba(0,229,255,.3)}
+.logo{width:44px;height:44px;background:#fff;color:#000;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;cursor:pointer}
 .url{font-size:11px;color:var(--muted);background:var(--card2);padding:8px 14px;border-radius:20px;border:1px solid var(--border)}
-.wrap{max-width:640px;margin:auto;padding:24px 20px 100px}
-.num{color:var(--cyan);font-weight:900;font-size:13px;letter-spacing:3px}
-h1{font-size:46px;font-weight:900;letter-spacing:-2px;line-height:.9;margin-top:6px}
-.sub{color:var(--muted);margin-top:10px;font-size:14px;line-height:1.4}
+.wrap{max-width:640px;margin:auto;padding:24px 20px 100px}.num{color:var(--cyan);font-weight:900;font-size:13px;letter-spacing:3px}
+h1{font-size:46px;font-weight:900;letter-spacing:-2px;line-height:.9;margin-top:6px}.sub{color:var(--muted);margin-top:10px;font-size:14px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:14px;margin-top:22px}
-.row{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;transition:.2s;cursor:pointer}
-.row:hover{border-color:var(--cyan);transform:translateY(-1px)}
+.row{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;cursor:pointer}
 .row b{font-size:15px}.row small{color:var(--muted);font-size:12px}
-.badge{font-size:10px;font-weight:800;padding:4px 8px;border-radius:8px;margin-left:8px}
-.badge.ghana{background:linear-gradient(90deg,#FF0000,#FFD60A,#00FF00);color:#000}
-.badge.new{background:var(--cyan);color:#000}
-.badge.hot{background:var(--pink);color:#fff}
-.toggle{width:48px;height:28px;background:#2a2a2e;border-radius:20px;position:relative;cursor:pointer}.toggle:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.25s}
-.toggle.on{background:var(--cyan)}.toggle.on:after{transform:translateX(20px)}
-.btn{width:100%;background:linear-gradient(135deg,var(--pink),#FF6B35);color:#fff;border:0;padding:16px;border-radius:16px;font-weight:900;letter-spacing:.5px;cursor:pointer;box-shadow:0 8px 24px rgba(255,45,85,.3)}
-.btn.cyan{background:linear-gradient(135deg,var(--cyan),#0088FF);box-shadow:0 8px 24px rgba(0,229,255,.3)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
-.tool{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:18px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
-.tool:hover{border-color:var(--cyan);transform:translateY(-2px)}.tool b{font-size:15px}.tool small{color:var(--muted);font-size:11px}
-.tool.color1{background:linear-gradient(135deg,#1c1c20,#00E5FF15)} .tool.color2{background:linear-gradient(135deg,#1c1c20,#FF2D5515)}
-.tool.color3{background:linear-gradient(135deg,#1c1c20,#FFD60A15)} .tool.color4{background:linear-gradient(135deg,#1c1c20,#00FF8815)}
-.nav{position:fixed;inset:0;background:rgba(0,0,0,.94);backdrop-filter:blur(30px);z-index:100;display:none;padding:24px}
-.nav.open{display:block}.nav-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
-.nav a{display:flex;align-items:center;font-size:36px;font-weight:900;padding:16px 0;color:#555;text-decoration:none;transition:.2s;cursor:pointer}.nav a.active,.nav a:hover{color:#fff}.nav a span{color:var(--cyan);font-size:14px;margin-right:16px;min-width:24px}
-.hidden{display:none}input{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:16px;color:var(--text);font-size:15px;outline:none;margin-bottom:8px}
-input:focus{border-color:var(--cyan)}.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:24px;line-height:1.6}
-</style>
-</head>
-<body>
-<header><div class="logo" onclick="openNav()">B6</div><div class="url">brainy666hub.netlify.app • LIVE</div></header>
-<div id="nav" class="nav"><div class="nav-top"><div class="logo" onclick="closeNav()">B6</div><div onclick="closeNav()" style="font-size:32px;cursor:pointer">✕</div></div>
-<a onclick="go('01')" id="n01"><span>01</span> Home</a><a onclick="go('02')" id="n02"><span>02</span> AI Tools</a><a onclick="go('03')" id="n03"><span>03</span> Search Hub</a><a onclick="go('04')" id="n04"><span>04</span> Downloads</a><a onclick="go('05')" id="n05"><span>05</span> Learning</a><a onclick="go('06')" id="n06"><span>06</span> Links</a><a onclick="go('07')" id="n07"><span>07</span> Settings</a>
-<div class="foot" style="margin-top:60px;text-align:left">Built with ❤️ in Kumasi<br>Sarpong Kofi • 2026</div></div>
-
-<div class="wrap">
-<div id="p01" class="page"><div class="num">01 — WELCOME</div><h1>Internet<br><span style="background:linear-gradient(90deg,#00E5FF,#FF2D55);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Hub.</span></h1><p class="sub">Your Ghanaian gateway to AI, learning & tools. All in one place, fast & free.</p>
-<div class="card"><div class="row" style="background:linear-gradient(135deg,#00E5FF22,#FF2D5522,#FFD60A22);border-color:#333"><div><b style="font-size:20px">Akwaaba, Brainy666! 🇬🇭</b><br><small>7 sections • Updated today • Kumasi made</small></div><div style="font-size:32px">🚀</div></div>
-<div class="grid"><div class="tool color1" onclick="go('02')"><b>🤖 AI Tools</b><br><small>ChatGPT, Claude, Perplexity</small></div><div class="tool color2" onclick="go('03')"><b>🔍 Search Hub</b><br><small>YouTube, GitHub, Google</small></div><div class="tool color3" onclick="go('05')"><b>📚 Learning</b><br><small>BECE, WASSCE, Skills</small></div><div class="tool color4" onclick="go('06')"><b>🔗 My Links</b><br><small>Portfolio & socials</small></div></div>
-<button class="btn cyan" style="margin-top:14px" onclick="go('02')">EXPLORE NOW →</button></div><div class="foot">Tap B6 logo for menu • Built by Sarpong</div></div>
-
-<div id="p02" class="page hidden"><div class="num">02 — ARTIFICIAL INTELLIGENCE</div><h1>AI Tools</h1><p class="sub">Most powerful AIs, one tap away.</p>
-<div class="card"><div class="row" onclick="window.open('https://chat.openai.com')"><div><b>ChatGPT</b> <span class="badge new">POPULAR</span><br><small>Ask, write, code anything</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://claude.ai')"><div><b>Claude AI</b><br><small>Best for writing & analysis</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://perplexity.ai')"><div><b>Perplexity</b> <span class="badge hot">FAST</span><br><small>Search + AI answers</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://leonardo.ai')"><div><b>Leonardo AI</b><br><small>Make images & art</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://blackbox.ai')"><div><b>Blackbox AI</b><br><small>Code generator</small></div><span>→</span></div></div></div>
-
-<div id="p03" class="page hidden"><div class="num">03 — SEARCH</div><h1>Search Hub</h1><p class="sub">Search everywhere from here.</p>
-<div class="card"><input id="q" placeholder="What you dey search? e.g. WASSCE past questions..."><button class="btn cyan" onclick="search()">SEARCH GOOGLE</button>
-<div class="grid" style="margin-top:12px"><div class="tool" onclick="s('youtube')"><b>▶️ YouTube</b></div><div class="tool" onclick="s('github')"><b>💻 GitHub</b></div><div class="tool" onclick="s('tiktok')"><b>🎵 TikTok</b></div><div class="tool" onclick="s('scholar')"><b>🎓 Scholar</b></div></div></div></div>
-
-<div id="p04" class="page hidden"><div class="num">04 — RESOURCES</div><h1>Downloads</h1><p class="sub">Useful tools for everyday.</p>
-<div class="card"><div class="row"><div><b>📄 CV Maker</b> <span class="badge hot">NEW</span><br><small>Create professional CV</small></div><span>→</span></div>
-<div class="row"><div><b>🎨 Logo Templates</b><br><small>For businesses & brands</small></div><span>→</span></div><div class="row"><div><b>📊 Invoice Gen</b><br><small>For your hustle</small></div><span>→</span></div><button class="btn">REQUEST TOOL</button></div></div>
-
-<div id="p05" class="page hidden"><div class="num">05 — GHANA EDITION</div><h1>Learning</h1><p class="sub">Level up - Made for Ghana students.</p>
-<div class="card"><div class="row" onclick="window.open('https://wassce.org')"><div><b>📚 WASSCE Past Qs</b> <span class="badge ghana">GHANA</span><br><small>2010-2024 all subjects</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://beceguide.com')"><div><b>📖 BECE Guide</b> <span class="badge ghana">GHANA</span><br><small>Past questions & answers</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://scholarships.gov.gh')"><div><b>🎓 Ghana Scholarship</b> <span class="badge ghana">FREE</span><br><small>Apply for support</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://freecodecamp.org')"><div><b>💻 FreeCodeCamp</b><br><small>Learn coding free</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://roadmap.sh')"><div><b>🗺️ Developer Roadmap</b><br><small>From beginner to pro</small></div><span>→</span></div></div></div>
-
-<div id="p06" class="page hidden"><div class="num">06 — CONNECT</div><h1>Your Links</h1><p class="sub">Your digital identity - edit anytime.</p>
-<div class="card">
-<div class="row" onclick="window.open('https://github.com/brainy666')"><div><b>💻 GitHub</b><br><small>github.com/brainy666</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://x.com')"><div><b>🐦 Twitter / X</b><br><small>@brainy666hub</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://linkedin.com')"><div><b>💼 LinkedIn</b><br><small>Add your LinkedIn</small></div><span>→</span></div>
-<div class="row" onclick="window.open('https://wa.me/233000000000')"><div><b>💬 WhatsApp</b><br><small>Chat for business</small></div><span>→</span></div>
-<input id="linkTitle" placeholder="New link title (e.g. My TikTok)"><input id="linkUrl" placeholder="https://..."><button class="btn cyan" onclick="addLink()">+ ADD CUSTOM LINK</button>
-<div id="links" style="margin-top:12px"></div></div></div>
-
-<div id="p07" class="page hidden"><div class="num">07 — CUSTOMIZE</div><h1>Settings</h1><p class="sub">Make it yours.</p>
-<div class="card"><div class="row"><div><b>✨ Animations</b><br><small>Smooth transitions</small></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
-<div class="row"><div><b>🇬🇭 Ghana Mode</b><br><small>Show Ghana badges</small></div><div class="toggle on"></div></div>
-<button class="btn" onclick="localStorage.clear();location.reload()">CLEAR ALL DATA</button></div><div class="foot">brainy666hub.netlify.app<br>Built by Sarpong Kofi • Kumasi, Ghana • 2026<br>Made with ❤️ on phone</div></div>
-</div>
-
-<script>
-function openNav(){document.getElementById('nav').classList.add('open')}
-function closeNav(){document.getElementById('nav').classList.remove('open')}
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('p'+id).classList.remove('hidden');document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));document.getElementById('n'+id).classList.add('active');closeNav();scrollTo(0,0)}
-function search(){let q=document.getElementById('q').value;if(!q)return;window.open('https://www.google.com/search?q='+encodeURIComponent(q))}
-function s(t){let q=document.getElementById('q').value||'';let u={youtube:'https://www.youtube.com/results?search_query=',github:'https://github.com/search?q=',google:'https://www.google.com/search?q=',scholar:'https://scholar.google.com/scholar?q=',tiktok:'https://www.tiktok.com/search?q='};window.open(u[t]+encodeURIComponent(q))}
-function addLink(){let title=linkTitle.value,url=linkUrl.value;if(!title||!url)return alert('Add title & link');let list=JSON.parse(localStorage.getItem('myLinks')||'[]');list.push({title,url});localStorage.setItem('myLinks',JSON.stringify(list));render();linkTitle.value='';linkUrl.value=''}
-function render(){let list=JSON.parse(localStorage.getItem('myLinks')||'[]');links.innerHTML=list.map(l=>`<div class="row" onclick="window.open('${l.url}')"><div><b>${l.title}</b><br><small>${l.url}</small></div><span>→</span></div>`).join('')}render();
-go('01');
-</script>
-</body>
- </html>
+.badge{font-size:10px;font-weight:800;padding:4px 8px;border-radius:8px;margin-left:8px}.badge.ghana{background:linear-gradient(90deg,#FF0000,#FFD60A,#00FF00);color:#000}
+.toggle{width:48px;height:28px;background:#2a2a2e;border-radius:20px;position:relative}.toggle:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.25s}.toggle.on{background:var(--cyan)}.toggle.on:after{transform:translateX(20px)}
+.btn{width:100%;background:linear-gradient(135deg,var(--pink),#FF6B35);color:#fff;border:
