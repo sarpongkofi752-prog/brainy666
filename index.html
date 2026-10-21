@@ -29,10 +29,8 @@ h1{font-size:42px;font-weight:900;line-height:.95;margin-top:6px}.sub{color:var(
 .icon{width:44px;height:44px;background:var(--card2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px}
 .divider{height:1px;background:var(--border);margin:18px 0}
 .toggle{width:48px;height:28px;background:#2a2a2e;border-radius:20px;position:relative;cursor:pointer;flex-shrink:0}.toggle:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.25s}.toggle.on{background:var(--cyan)}.toggle.on:after{transform:translateX(20px)}
-.avatar{width:64px;height:64px;border-radius:50%;background:var(--card2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden;cursor:pointer;flex-shrink:0}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--card2);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;cursor:pointer;flex-shrink:0}
 .avatar img{width:100%;height:100%;object-fit:cover}
-.avatar-row{display:flex;gap:12px;align-items:center;margin-bottom:12px}
-.upload-label{font-size:11px;background:var(--card2);border:1px dashed var(--border);padding:8px 12px;border-radius:20px;cursor:pointer;display:inline-block}
 </style>
 </head>
 <body>
@@ -41,10 +39,4 @@ h1{font-size:42px;font-weight:900;line-height:.95;margin-top:6px}.sub{color:var(
 <a onclick="go('01')" id="n01"><span>01</span> Home</a><a onclick="go('02')" id="n02"><span>02</span> AI Tools</a><a onclick="go('03')" id="n03"><span>03</span> Search Hub</a><a onclick="go('04')" id="n04"><span>04</span> Tools</a><a onclick="go('05')" id="n05"><span>05</span> Workspace</a><a onclick="go('06')" id="n06"><span>06</span> Links</a><a onclick="go('07')" id="n07"><span>07</span> Settings</a></div>
 
 <div class="wrap">
-<div id="p01" class="page"><div class="num">01 — WELCOME</div><h1>Internet<br><span style="background:linear-gradient(90deg,#00E5FF,#FF2D55);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Hub.</span></h1><p class="sub">Profile Pic + All tools + Settings!</p>
-<div class="card">
-<div style="display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#00E5FF11,#FFD60A11);border-radius:16px;padding:14px;margin-bottom:10px">
-<div id="homeAvatar" class="avatar">🇬🇭</div>
-<div><b id="homeName">Akwaaba, Brainy666! 🇬🇭 🚀</b><br><small id="welcomeUser">7 sections • Tap B6 for menu</small></div>
-</div>
-<div class="grid"><div class="tool" onclick="go('04')"><b>🛠️ Tools</b><small>Password, IP, URL</small></div><div class="tool" onclick="go('05')"><b>👤 Profile</b><small>Add your pic</small></div><div class="tool" onclick="go('07')"><b>⚙️ Settings</b><small>Light Mode</small></div><div class="tool" onclick="go('06')"><b>💬 Links</b><small>WhatsApp</small></div></div><button class="btn cyan" onclick="go('05')" style="margin-top:12px">ADD PROFILE
+<div id="p01" class="page"><div class="num">01 — WELCOME</div><h1>Internet<br><span style="background:linear-gradient(90deg,#00E5FF,#FF2D55);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Hub.</span></h1><div class="card"><div style="display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#00E5FF11,#FFD60A11);border-radius:16px;padding:14px;margin-bottom:10px"><div id="homeAvatar" class="avatar" onclick="go('05')">🇬🇭</div><div><b id="homeName">Akwaaba, Brainy666! 🇬🇭</b><br><small id="welcomeUser">Tap avatar to add pic</small></div></div><div class="grid"><div class="tool" onclick="go('04')"><b>🛠️ Tools</b><small>Password, IP, URL</small></div><div class="tool" onclick="go('05')"><b>👤
